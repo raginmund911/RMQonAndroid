@@ -1,8 +1,12 @@
 package com.ransomer.rabbitmqonandroid;
 
 import android.os.Handler;
+
 import com.rabbitmq.client.QueueingConsumer;
+
 import java.io.IOException;
+
+
 
 /**
  *Consumes messages from a RabbitMQ broker
@@ -64,8 +68,9 @@ public class MessageConsumer extends IConnectToRabbitMQ{
        {
  
            try {
-               mQueue = "info_all";
-        	   //mQueue = mModel.queueDeclare().getQueue();
+               
+        	   mQueue = "debug_serverrouter";
+        	   //mQueue = mModel.queueDeclare().getQueue("info_all"); //creates a generic queue otherwise?
                MySubscription = new QueueingConsumer(mModel);
                mModel.basicConsume(mQueue, false, MySubscription);
             } catch (IOException e) {
@@ -73,16 +78,16 @@ public class MessageConsumer extends IConnectToRabbitMQ{
                 return false;
             }
              if (MyExchangeType == "topic")
-                   AddBinding("INFO.#");//fanout has default binding
+                   AddBinding("#.ServerRouter");	//binding key for queue info_all
  
             Running = true;
-            mConsumeHandler.post(mConsumeRunner); //consuming happens here...
+            mConsumeHandler.post(mConsumeRunner);
  
            return true;
        }
        return false;
     }
-     
+ 
     /**
      * Add a binding between consumers Queue and the Exchange with routingKey
      * @param routingKey the binding key eg GOOG

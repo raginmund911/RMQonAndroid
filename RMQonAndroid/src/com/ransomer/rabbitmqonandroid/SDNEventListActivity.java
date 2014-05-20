@@ -1,5 +1,9 @@
 package com.ransomer.rabbitmqonandroid;
 
+import java.io.UnsupportedEncodingException;
+
+import com.ransomer.rabbitmqonandroid.MessageConsumer.OnReceiveMessageHandler;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -31,25 +35,24 @@ public class SDNEventListActivity extends FragmentActivity implements
 	 */
 	private boolean mTwoPane;
 	
+	private MessageConsumer mConsumer;
     
-    
+    Runnable mRunnable = new Runnable(){
+    	public void run() {
+    		
+    		mConsumer.connectToRabbitMQ();
+    	}
+    };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sdnevent_list);
-        
-		
-        
+        		        
 		Log.d("SDNEventListActivity", "Activity created");
-        
-      
- 
         Log.d("SDNEventListActivity", "Attempting connection to RabbitMQ");
         Toast.makeText(this,"Attempting connection to RabbitMQ ...", Toast.LENGTH_LONG).show();
         
-        
-      
         
 		if (findViewById(R.id.sdnevent_detail_container) != null) {
 			// The detail container view will be present only in the
@@ -66,7 +69,30 @@ public class SDNEventListActivity extends FragmentActivity implements
 		}
 		
 		
-        startService(new Intent(this,MQService.class));
+        //startService(new Intent(this,MQService.class));
+		
+		//Create the consumer
+        mConsumer = new MessageConsumer("137.140.3.151",
+                "sdn_events",
+                "topic");
+ 
+        
+        //register for messages
+        mConsumer.setOnReceiveMessageHandler(new OnReceiveMessageHandler(){
+ 
+            public void onReceiveMessage(byte[] message) {
+                String text = "";
+                try {
+                    text = new String(message, "UTF8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+ 
+                //mOutput.append("\n"+text);
+            }
+        });
+		
+		
 		
 				
 		};
@@ -116,6 +142,9 @@ public class SDNEventListActivity extends FragmentActivity implements
 	@Override
 	public void onResume() {
 		super.onResume();
+		Thread ConnectToRabbitMQ = new Thread(mRunnable);
+        ConnectToRabbitMQ.start();
+        
 		Log.d("SDNEventListActivity", "Activity Resumed");
 	}
 	
@@ -129,7 +158,7 @@ public class SDNEventListActivity extends FragmentActivity implements
 	 @Override
 	 public void onPause() {
 		 super.onPause();
-		 
+		 mConsumer.dispose();
 		 Log.d("SDNEventListActivity", "Activity Paused...");
 	     
 	 }
