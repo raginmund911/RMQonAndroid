@@ -26,7 +26,7 @@ public class DummyContent {
 
 	static {
 		// Add 3 sample items.
-		addItem(new DummyItem("1", "TimeStamp"));
+		addItem(new DummyItem("1", "TimeStam"));
 		addItem(new DummyItem("2", "Log Type"));
 		addItem(new DummyItem("3", "Class Name"));
 		addItem(new DummyItem("3", "Comment"));

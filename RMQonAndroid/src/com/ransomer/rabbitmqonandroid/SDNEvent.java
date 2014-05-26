@@ -16,19 +16,9 @@ public class SDNEvent {
 		 
 	//constructor for event
 	SDNEvent(String Timestamp, String LogType, String ClassName, String Comment) {
-		this.TimeStamp = TimeStamp;
-		this.LogType = LogType;
-		this.ClassName = ClassName;
-		this.Comment = Comment;
-		//Generate unique identifier
-		//mId = UUID.randomUUID();
+		
 	}
 
-	/*
-	public UUID getmId() {
-		return mId;
-	}
- 	*/
 	
 	@Override
     public String toString() {
