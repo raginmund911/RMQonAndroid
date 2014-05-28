@@ -9,10 +9,10 @@ import java.util.UUID;
 public class SDNEvent {
 	 
 	//private UUID mId; // an ID number will uniquely identify an instance of Crime
-	private String TimeStamp; //ex. - 2013-07-12 10:27:45.513
-	private String LogType; //ex. - DEBUG, INFO
-	private String ClassName; //ex. - [n.f.c.m.FloodlightModuleLoader]
-	private String Comment;//ex. - "Found Module net.floodlightcontroller.storage.memory.MemoryStorageSource"
+	private String mTimeStamp; //ex. - 2013-07-12 10:27:45.513
+	private String mLogType; //ex. - DEBUG, INFO
+	private String mClassName; //ex. - [n.f.c.m.FloodlightModuleLoader]
+	private String mComment;//ex. - "Found Module net.floodlightcontroller.storage.memory.MemoryStorageSource"
 		 
 	//constructor for event
 	SDNEvent(String Timestamp, String LogType, String ClassName, String Comment) {
@@ -22,7 +22,13 @@ public class SDNEvent {
 	
 	@Override
     public String toString() {
-        return null;
+        return mLogType;
     }
+	
+	public String getLogType() {
+		return mLogType;
+	}
+	
+	public String get
 }
 

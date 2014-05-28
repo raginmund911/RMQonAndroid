@@ -4,9 +4,7 @@
 package com.ransomer.rabbitmqonandroid;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 /**
  * @author ransomer
@@ -20,18 +18,13 @@ public class SDNEventQueue {
 		String line;
 		BufferedReader br;
 	
-		try{
-	        br = new BufferedReader(new InputStreamReader(getResources().getAssets().open(queueFilename)));
-	 
-	        while((line = br.readLine()) != null) {
-	            StringTokenizer sTok = new StringTokenizer(line, ":");
-	            SDNEvent sdn = new SDNEvent(sTok.nextToken());
-	            sdn.address = sTok.nextToken();
-	            eventArray.add(sdn);
-	           }
+		
 	
 	}
 	
+	//methods to retrieve queue names
+	public 
+
 	//Method to retrieve events
 	public ArrayList<SDNEvent> getSDNEvents() {
 		return eventArray;
