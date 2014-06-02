@@ -69,7 +69,7 @@ public class MessageConsumer extends IConnectToRabbitMQ{
  
            try {
                
-        	   mQueue = "debug_serverrouter";
+        	   mQueue = "info_all";
         	   //mQueue = mModel.queueDeclare().getQueue("info_all"); //creates a generic queue otherwise?
                MySubscription = new QueueingConsumer(mModel);
                mModel.basicConsume(mQueue, false, MySubscription);
@@ -78,7 +78,7 @@ public class MessageConsumer extends IConnectToRabbitMQ{
                 return false;
             }
              if (MyExchangeType == "topic")
-                   AddBinding("#.ServerRouter");	//binding key for queue info_all
+                   AddBinding("INFO.#");	//binding key for queue info_all
  
             Running = true;
             mConsumeHandler.post(mConsumeRunner);

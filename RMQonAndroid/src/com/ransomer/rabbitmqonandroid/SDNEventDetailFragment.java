@@ -46,19 +46,19 @@ public class SDNEventDetailFragment extends Fragment {
 					ARG_ITEM_ID));
 		}
 	}
-
+	//Create and configure the fragment's view, inflate layout
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_sdnevent_detail,
 				container, false);
-
+		/*
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.sdnevent_detail))
 					.setText(mItem.content);
 		}
-
+		*/
 		return rootView;
 	}
 }

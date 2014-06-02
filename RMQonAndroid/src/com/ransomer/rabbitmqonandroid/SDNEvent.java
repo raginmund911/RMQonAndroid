@@ -29,6 +29,6 @@ public class SDNEvent {
 		return mLogType;
 	}
 	
-	public String get
+	
 }
 

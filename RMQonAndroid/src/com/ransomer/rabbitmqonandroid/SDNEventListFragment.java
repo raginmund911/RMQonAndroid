@@ -71,12 +71,13 @@ public class SDNEventListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		//create queue list
+		String[] values = new String[] { "debug_logservice", "debug_restlet", "serverrouter", "virtualhost", "info_all" };
 		
 
-		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<SDNEventStreams.SDNEventQueue>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, SDNEventStreams.ITEMS));
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+		        android.R.layout.simple_list_item_1, values);
+		    setListAdapter(adapter);
 	}
 	
 
