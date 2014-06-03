@@ -25,7 +25,7 @@ public class SDNEventQueue {
 	private SDNEventQueue(Context appContext) {
 		mAppContext = appContext;
 		mSDNEvents = new ArrayList<SDNEvent>();
-		//insert
+		
 	}
 	
 	public static SDNEventQueue get(Context c) {

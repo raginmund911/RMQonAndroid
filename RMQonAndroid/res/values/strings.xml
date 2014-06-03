@@ -3,6 +3,7 @@
 
     <string name="app_name">RabbitMQonAndroid</string>
     <string name="title_sdnevent_detail">SDNEvent Detail</string>
+    <string name="sdn_event">SDN Event Info</string>
     
 	
 </resources>

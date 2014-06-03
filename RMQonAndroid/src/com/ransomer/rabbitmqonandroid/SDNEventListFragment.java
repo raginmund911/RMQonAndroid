@@ -1,8 +1,11 @@
 package com.ransomer.rabbitmqonandroid;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,6 +22,8 @@ import com.ransomer.rabbitmqonandroid.dummy.SDNEventStreams;
  * interface.
  */
 public class SDNEventListFragment extends ListFragment {
+	private ArrayList<SDNEvent> mSDNEvents;
+	private static final String TAG = "SDNEventListFragment";
 	
 			
 	/**
@@ -70,17 +75,17 @@ public class SDNEventListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		mSDNEvents = SDNEventQueue.get(getActivity()).getSDNEvents();
 		//create queue list
 		String[] values = new String[] { "debug_logservice", "debug_restlet", "serverrouter", "virtualhost", "info_all" };
 		
-
+		//insert each list item into an array
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 		        android.R.layout.simple_list_item_1, values);
 		    setListAdapter(adapter);
 	}
 	
-
+	
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -118,6 +123,8 @@ public class SDNEventListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView listView, View view, int position,
 			long id) {
+		SDNEvent e = (SDNEvent)(getListAdapter()).getItem(position);
+		Log.d(TAG, e.getLogType() + " was selected...");
 		super.onListItemClick(listView, view, position, id);
 
 		// Notify the active callbacks interface (the activity, if the

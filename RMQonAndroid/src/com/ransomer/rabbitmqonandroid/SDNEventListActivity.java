@@ -50,7 +50,7 @@ public class SDNEventListActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_sdnevent_list);
 		
 		//create queue list
-		String[] values = new String[] { "debug_logservice", "debug_restlet", "serverrouter", "virtualhost", "info_all" };
+		//String[] values = new String[] { "debug_logservice", "debug_restlet", "serverrouter", "virtualhost", "info_all" };
         		        
 		Log.d("SDNEventListActivity", "Activity created");
         Log.d("SDNEventListActivity", "Attempting connection to RabbitMQ");
