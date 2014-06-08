@@ -29,6 +29,20 @@ public class SDNEvent {
 		return mLogType;
 	}
 	
+	public void setTimeStamp (String timestamp){
+		mTimeStamp = timestamp;
+	}
 	
+	public void setLogType(String logtype){
+		mLogType = logtype;
+	}
+	
+	public void setClassName(String classname){
+		mClassName = classname;
+	}
+	
+	public void setComment (String comment){
+		mComment = comment;
+	}
 }
 

@@ -66,13 +66,13 @@ public class SDNEventDetailFragment extends ListFragment {
 		}
 		
 		// Configure the view for this SDNEvent, this is where you use your setters...
-		SDNEvent s = getItem(position);
+		//SDNEvent s = getItem(position);
 		TextView titleTextView =
 		(TextView)convertView.findViewById(R.id.sdnevent_detail_container);
-		titleTextView.setText(s.getLogType());
+		//titleTextView.setText(s.getLogType());
 		TextView dateTextView =
 		(TextView)convertView.findViewById(R.id.sdnevent_detail_container);
-		dateTextView.setText(c.getDate().toString());
+		//dateTextView.setText(c.getDate().toString());
 		
 		
 		return convertView;

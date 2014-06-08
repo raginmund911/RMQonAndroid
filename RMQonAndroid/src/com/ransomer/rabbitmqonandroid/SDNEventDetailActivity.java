@@ -21,6 +21,8 @@ import android.view.MenuItem;
  */
 public class SDNEventDetailActivity extends FragmentActivity {
 
+	public static final String EXTRA_SDNEVENT_ID = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

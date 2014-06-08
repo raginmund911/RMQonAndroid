@@ -3,6 +3,7 @@ package com.ransomer.rabbitmqonandroid;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -123,9 +124,14 @@ public class SDNEventListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView listView, View view, int position,
 			long id) {
-		SDNEvent e = (SDNEvent)(getListAdapter()).getItem(position);
-		Log.d(TAG, e.getLogType() + " was selected...");
 		super.onListItemClick(listView, view, position, id);
+		SDNEvent e = (SDNEvent)(getListAdapter()).getItem(position);
+		//Start an instance of SDNEventDetailActivity
+		Log.d(TAG, e.getLogType() + " was selected...");
+		
+		//Intent i = new Intent(getActivity(), SDNEventDetailActivity.class);
+		//i.putExtra(SDNEventDetailActivity.EXTRA_SDNEVENT_ID, e.getLogType());
+		
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
